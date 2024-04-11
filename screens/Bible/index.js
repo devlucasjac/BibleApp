@@ -1,12 +1,14 @@
+import Books from "../../context/Books"
+
 import {View,Text} from "react-native";
 import { styles } from "./styles";
 
 import { BASE_URL } from "../configs";
 
-import { useEffect, useState} from "react";
+import { useEffect, useContext } from "react";
 
 export default function Bible(){
-    const [books,setBooks] = useState();
+    const {books,setBooks} = useContext(Books);
 
     useEffect(()=>{
         const request = new XMLHttpRequest();
@@ -21,14 +23,14 @@ export default function Bible(){
                 console.log(`Error: ${request.status}`);
               }
         }
-
-
     })
 
     return (
+        
         <View style={styles.container}>
+            <Text>OLa</Text>
             {books && books.map((book) => (
-            <Text key={book.id}>{book.name}</Text>))}
+            <View style={styles.smallCont}><Text key={book.id}>{book.name}</Text></View>))}
         </View>
     );
 };
