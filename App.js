@@ -5,24 +5,35 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Bible from "./screens/Bible/index";
 import BibleSearch from "./screens/BibleSearch/index";
  
-import { useState, useContext} from 'react';
+import { useState } from 'react';
 
 import Books from './context/Books';
+import Theme from './context/Theme';
+import CurrentBook from './context/CurrentBook';
+
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-  const [books,setBooks] = useState()
+  const [currentBook,setCurrentBook] = useState({bible:"ARA",book:1,chapter:1})
+  const [books,setBooks] = useState({allBooks:[],booksResults:[]})
+  const [theme,setTheme] = useState({
+    size: "large", bold: "bold",isLit:true
+  })
 
   return (
     <NavigationContainer>
-      <Books.Provider value={{books,setBooks}}>
-    <Stack.Navigator initialRouteName='Bible'>
-        <Stack.Screen name="Bible" component={Bible}/>
-        <Stack.Screen name="BibleSearch" component={BibleSearch}/>
-    </Stack.Navigator>
-      </Books.Provider>
+      <CurrentBook.Provider value={{currentBook,setCurrentBook}}>
+        <Books.Provider value={{books,setBooks}}>
+          <Theme.Provider value={{theme,setTheme}}>
+            <Stack.Navigator initialRouteName='Bible'>
+              <Stack.Screen name="Bible" component={Bible}/>
+              <Stack.Screen name="BibleSearch" component={BibleSearch}/>
+            </Stack.Navigator>
+          </Theme.Provider>
+        </Books.Provider>
+      </CurrentBook.Provider>
     </NavigationContainer>
   );
 }
