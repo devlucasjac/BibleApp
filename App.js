@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Bible from "./screens/Bible/index";
 import BibleSearch from "./screens/BibleSearch/index";
+import Home from './screens/Home';
  
 import { useState } from 'react';
 
@@ -27,7 +28,8 @@ export default function App() {
       <CurrentBook.Provider value={{currentBook,setCurrentBook}}>
         <Books.Provider value={{books,setBooks}}>
           <Theme.Provider value={{theme,setTheme}}>
-            <Stack.Navigator initialRouteName='Bible'>
+            <Stack.Navigator initialRouteName='Home'>
+            <Stack.Screen name="Home" component={Home}/>
               <Stack.Screen name="Bible" component={Bible}/>
               <Stack.Screen name="BibleSearch" component={BibleSearch}/>
             </Stack.Navigator>
