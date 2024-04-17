@@ -28,7 +28,7 @@ export default function App() {
       <CurrentBook.Provider value={{currentBook,setCurrentBook}}>
         <Books.Provider value={{books,setBooks}}>
           <Theme.Provider value={{theme,setTheme}}>
-            <Stack.Navigator initialRouteName='Home'>
+            <Stack.Navigator initialRouteName='Bible'>
             <Stack.Screen name="Home" component={Home}/>
               <Stack.Screen name="Bible" component={Bible}/>
               <Stack.Screen name="BibleSearch" component={BibleSearch}/>

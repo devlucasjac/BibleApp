@@ -4,9 +4,11 @@ import CurrentBook from "../../context/CurrentBook";
 import {View,Text} from "react-native";
 import { styles } from "./styles";
 
-import { BASE_URL } from "../configs";
+import { BASE_URL } from "../../configs";
 
 import { useEffect, useContext } from "react";
+
+import BibleReader from "../../components/BibleReader";
 
 export default function Bible(){
     const {books,setBooks} = useContext(Books);
@@ -14,7 +16,10 @@ export default function Bible(){
 
     useEffect(()=>{
         const request = new XMLHttpRequest();
-        request.open("GET",BASE_URL + "get-books/"+currentBook.bible + "/")
+        request.open("GET",BASE_URL + 
+        "get-books/" + 
+        currentBook.bible +
+        "/")
         request.send();
         request.onload = ()=>{
             if (request.readyState === 4 && request.status === 200) {
@@ -27,12 +32,10 @@ export default function Bible(){
         }
     })
 
-    return (
-        
-        <View style={styles.container}>
-            <Text>OLa</Text>
-            {books.allBooks && books.allBooks.map((book) => (
-            <View style={styles.smallCont}><Text key={book.id}>{book.name}</Text></View>))}
+    return (        
+        <View style={styles.container}>           
+            {books.allBooks ? <BibleReader />:
+            <></>}
         </View>
     );
 };
