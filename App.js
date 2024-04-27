@@ -6,6 +6,8 @@ import Bible from "./screens/Bible/index";
 import BibleSearch from "./screens/BibleSearch/index";
 import Home from "./screens/Home";
 
+import ScreenNavigator from "./components/ScreenNavigator";
+
 import { useState } from "react";
 
 import Books from "./context/Books";
@@ -37,6 +39,7 @@ export default function App() {
               <Stack.Screen name="Bible" component={Bible} />
               <Stack.Screen name="BibleSearch" component={BibleSearch} />
             </Stack.Navigator>
+              <ScreenNavigator />
           </Theme.Provider>
         </Books.Provider>
       </CurrentBook.Provider>
