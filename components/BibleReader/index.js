@@ -5,7 +5,7 @@ import CurrentBook from "../../context/CurrentBook"
 
 import { BASE_URL } from "../../configs"
 
-import {View,Text,ScrollView} from "react-native"
+import {View, Text, ScrollView, Button} from "react-native"
 
 import { useEffect,useContext, useState} from "react"
 
@@ -38,7 +38,58 @@ export default function BibleReader (){
       }
     };
     },[currentBook])
+
+    function changeChapter(val) {
+      const valor = val;      
+      if (valor === "proximo") {
+        if (currentBook.chapter === book.chapters) {
+          setCurrentBook({
+            ...currentBook,
+            book: currentBook.book + 1,
+            chapter: 1,
+          });
+        } else {
+          setCurrentBook({
+            ...currentBook,
+            chapter: currentBook.chapter + 1,
+          });
+        }
+      } else {
+        if (currentBook.chapter === 1) {
+          setCurrentBook({
+            ...currentBook,
+            book: currentBook.book - 1,
+            chapter: findBook(currentBook.book - 1).chapters,
+          });
+        } else {
+          setCurrentBook({
+            ...currentBook,
+            chapter: currentBook.chapter - 1,
+          });
+        }
+      }
+    }
+
+    function findBook(bookId) {
+      let findedBook = books.allBooks.find((book) => book.bookid == bookId);
+      /*if (findedBook === undefined) {
+        setCurrentBook({ ...currentBook, book: 40 });
+      }*/
+      return findedBook;
+    }
+  
+    const book = findBook(currentBook.book);
+
     
 
-    return <ScrollView>{chapter && chapter.map((verse)=><ShowVerse verse={verse} key={verse.id}/>)}</ScrollView>
+    return <ScrollView>
+        {book && chapter &&(<>
+          <Text>{book.name} : {currentBook.chapter}</Text>
+          <>{chapter.map((verse)=><ShowVerse verse={verse} key={verse.id}/>)}</>
+          <View>
+            <Button title="Anterior" onPress={()=>changeChapter("anterior")}/>
+            <Button title="Proximo" onPress={()=>changeChapter("proximo")}/>
+          </View>
+        </>)}   
+      </ScrollView>
 }

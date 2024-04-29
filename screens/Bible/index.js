@@ -23,8 +23,7 @@ export default function Bible(){
         request.send();
         request.onload = ()=>{
             if (request.readyState === 4 && request.status === 200) {
-                const data = request.response;
-                console.log(JSON.parse(data))
+                const data = request.response;                
                 setBooks({...books,allBooks:JSON.parse(data)});
               } else {
                 console.log(`Error: ${request.status}`);
