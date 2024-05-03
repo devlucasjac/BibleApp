@@ -1,4 +1,5 @@
 import ShowVerse from "../ShowVerse"
+import HeaderBible from "../HeaderBible"
 
 import Books from "../../context/Books"
 import CurrentBook from "../../context/CurrentBook"
@@ -84,6 +85,7 @@ export default function BibleReader (){
 
     return <ScrollView>
         {book && chapter &&(<>
+          <HeaderBible></HeaderBible>
           <Text>{book.name} : {currentBook.chapter}</Text>
           <>{chapter.map((verse)=><ShowVerse verse={verse} key={verse.id}/>)}</>
           <View>
