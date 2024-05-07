@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 
 import { PRAY_URL } from "../../configs";
 
+import RandomVerse from "../../components/RandomVerse";
+
 export default function Home() {
   const [pray, setPray] = useState();
 
@@ -13,7 +15,6 @@ export default function Home() {
     request.onload = () => {
       if (request.readyState === 4 && request.status === 200) {
         const data = request.response;
-        console.log(JSON.parse(data));
         setPray(JSON.parse(data));
       } else {
         console.log(`Error: ${request.status}`);
@@ -26,6 +27,8 @@ export default function Home() {
       {pray && (
         <>
           <Text>Home</Text>
+          <RandomVerse />
+          <Text>Liturgia</Text>
           <Text>{pray.primeiraLeitura.texto}</Text>
         </>
       )}

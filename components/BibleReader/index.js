@@ -85,7 +85,7 @@ export default function BibleReader (){
 
     return <ScrollView>
         {book && chapter &&(<>
-          <HeaderBible></HeaderBible>
+          <HeaderBible />
           <Text>{book.name} : {currentBook.chapter}</Text>
           <>{chapter.map((verse)=><ShowVerse verse={verse} key={verse.id}/>)}</>
           <View>
