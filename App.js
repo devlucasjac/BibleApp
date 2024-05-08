@@ -22,7 +22,7 @@ export default function App() {
     book: 1,
     chapter: 1,
   });
-  const [books, setBooks] = useState({ allBooks: [], booksResults: [] });
+  const [books, setBooks] = useState({ allBooks: [], results: [] });
   const [theme, setTheme] = useState({
     size: "large",
     bold: "bold",

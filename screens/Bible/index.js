@@ -33,8 +33,7 @@ export default function Bible(){
 
     return (        
         <View style={styles.container}>           
-            {books.allBooks ? <BibleReader />:
-            <></>}
+            {books.allBooks && <BibleReader />}
         </View>
     );
 };

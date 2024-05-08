@@ -24,6 +24,6 @@ export default function RandomVerse(){
   }, [currentBook.bible]);
 
     return <View>
-        <BibleVerseContainer verse={verse} title={"Palavra do dia"}/>
+        {verse && <BibleVerseContainer verse={verse} title={"Palavra do dia"}/>}
     </View>
 }
