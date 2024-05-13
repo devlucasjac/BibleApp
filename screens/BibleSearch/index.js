@@ -1,23 +1,22 @@
-import {View,Text} from "react-native";
+import {View} from "react-native";
 import { styles } from "./style";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect} from "react";
 
 import Books from "../../context/Books";
 
-import ShowVerse from "../../components/ShowVerse";
+import FoundedVerses from "../../components/FoundedVerses/index";
 
 export default function BibleSearch(){
-    const {books} = useContext(Books)
+    const {books} = useContext(Books)    
 
-    useEffect(()=>{console.log(books.results)},[books])
+    useEffect(()=>{
+        console.log("entrou na pagina de busca")    
+    },[])
 
     return (
         <View style={styles.container}>
-            {books.results != [] ? 
-                books.results.map((verse)=> <ShowVerse verse={verse}/>) :
-                <Text>não</Text>
-            } 
+            {books.results !=[] ?  <FoundedVerses />:<Text>O TEXTO NÃO ESTÁ CARREGANDO</Text>} 
         </View>
     )
 }
