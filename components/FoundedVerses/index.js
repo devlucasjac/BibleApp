@@ -9,7 +9,7 @@ import BibleVerseContainer from "../BibleVerseContainer";
 export default function FoundedVerses(){
     const {books} = useContext(Books);
 
-    useEffect(()=>{console.log(books.results)},[])
+    useEffect(()=>{console.log(books.results)},[books])
 
     return <ScrollView>
             {books.results.map((verse)=> <BibleVerseContainer verse={verse}/>)}

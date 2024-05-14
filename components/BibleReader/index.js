@@ -18,26 +18,26 @@ export default function BibleReader (){
 
     useEffect(()=>{
         const xhr = new XMLHttpRequest();
-    xhr.open(
-      "GET",
-      BASE_URL +
-        "get-text/" +
-        currentBook.bible +
-        "/" +
-        currentBook.book +
-        "/" +
-        currentBook.chapter+
-        "/"
-    );
-    xhr.send();
-    xhr.onload = () => {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        const data = xhr.response;
-        setChapter(JSON.parse(data));
-      } else {
-        console.log(`Error: ${xhr.status}`);
-      }
-    };
+        xhr.open(
+          "GET",
+          BASE_URL +
+            "get-text/" +
+            currentBook.bible +
+            "/" +
+            currentBook.book +
+            "/" +
+            currentBook.chapter+
+            "/"
+        );
+        xhr.send();
+        xhr.onload = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = xhr.response;
+            setChapter(JSON.parse(data));
+          } else {
+            console.log(`Error: ${xhr.status}`);
+          }
+        };
     },[currentBook])
 
     function changeChapter(val) {

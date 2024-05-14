@@ -18,16 +18,10 @@ export default function SearchVerse(){
 
     const handleInput =(text)=>{
         setInput(text)
-    }
-
-    function searchPassages() {    
-        navigation.navigate("BibleSearch");    
-        setBooks({...books, results: []}); 
-        /*CASO DE ALGUM BUG DE PERMANENCIA NA PESQUISA, OPTE POR "LIMPAR" O STATE*/
         const xhr = new XMLHttpRequest();
         xhr.open(
           "GET",
-          BASE_URL + "find/" + currentBook.bible + "/?search=" + input
+          BASE_URL + "find/" + currentBook.bible + "/?search=" + text
         );
         xhr.send();
         xhr.onload = () => {
@@ -39,8 +33,12 @@ export default function SearchVerse(){
             console.log(`Error: ${xhr.status}`);
           }
         };
+    }
 
-        
+    function searchPassages() {    
+        navigation.navigate("BibleSearch");    
+        //setBooks({...books, results: []}); 
+        /*CASO DE ALGUM BUG DE PERMANENCIA NA PESQUISA, OPTE POR "LIMPAR" O STATE*/               
     }    
 
     return <View>

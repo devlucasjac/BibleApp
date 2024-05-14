@@ -16,7 +16,7 @@ export default function BibleSearch(){
 
     return (
         <View style={styles.container}>
-            {books.results !=[] ?  <FoundedVerses />:<Text>O TEXTO NÃO ESTÁ CARREGANDO</Text>} 
+            {books.results &&   <FoundedVerses />} 
         </View>
     )
 }
