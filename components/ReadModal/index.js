@@ -1,14 +1,18 @@
-import {Modal, Button, View, Text} from "react-native"
+import {Modal, Button, View, ScrollView} from "react-native"
 
 import {useState} from "react"
 
 import BibleSelector from "../BibleSelector"
+import BookSelector from "../BookSelector"
 
 export default function ReadModal(){
     const [isVisible,setIsVisible] = useState(false)
     const [showBible,setShowBible] = useState(false)
 
-    return <View>
+    const [showBook,setShowBook] = useState(false)
+
+
+    return <ScrollView>
         <Button title="Escolha o capitulo" onPress={()=>setIsVisible(!isVisible)}/>
         <Modal visible={isVisible} 
                onRequestClose={()=>setIsVisible(false)}
@@ -18,7 +22,9 @@ export default function ReadModal(){
                 <Button title="Fecha" onPress={()=> setIsVisible(!isVisible)}/>
                 <Button title="Biblia" onPress={()=> setShowBible(!showBible)}/>
                 {showBible && <BibleSelector />}
+                <Button title="Livro" onPress={()=> setShowBook(!showBook)}/>
+                {showBook && <BookSelector />}
             </View> 
         </Modal>
-    </View>
+    </ScrollView>
 }

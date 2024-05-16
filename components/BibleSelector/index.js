@@ -25,7 +25,7 @@ export default function BibleSelector(){
         };
     },[])
 
-    return <View>
+    return <ScrollView>
             {bibles && bibles.map((bible,i)=><View>
                 <Text>{bible.language}{Flags[i]}</Text>
                 {bible.translations.map((translation)=>
@@ -37,5 +37,5 @@ export default function BibleSelector(){
                             })}/>
                 )}                
             </View>)}
-        </View>
+        </ScrollView>
 }
