@@ -2,8 +2,9 @@ import {Modal, Button, View, ScrollView} from "react-native"
 
 import {useState} from "react"
 
-import BibleSelector from "../BibleSelector"
 import BookSelector from "../BookSelector"
+import BibleSelector from "../BibleSelector"
+import ChapterSelector from "../ChapterSelector"
 
 export default function ReadModal(){
     const [isVisible,setIsVisible] = useState(false) 
@@ -18,6 +19,7 @@ export default function ReadModal(){
                 <Button title="Fecha" onPress={()=> setIsVisible(!isVisible)}/>
                 <BibleSelector />                
                 <BookSelector />
+                <ChapterSelector />
             </View> 
         </Modal>
     </ScrollView>
