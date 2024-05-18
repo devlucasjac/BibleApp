@@ -6,11 +6,7 @@ import BibleSelector from "../BibleSelector"
 import BookSelector from "../BookSelector"
 
 export default function ReadModal(){
-    const [isVisible,setIsVisible] = useState(false)
-    const [showBible,setShowBible] = useState(false)
-
-    const [showBook,setShowBook] = useState(false)
-
+    const [isVisible,setIsVisible] = useState(false) 
 
     return <ScrollView>
         <Button title="Escolha o capitulo" onPress={()=>setIsVisible(!isVisible)}/>
@@ -20,10 +16,8 @@ export default function ReadModal(){
         >
             <View style={{flex:1,backgroundColor:"ligthblue",padding:60}}>
                 <Button title="Fecha" onPress={()=> setIsVisible(!isVisible)}/>
-                <Button title="Biblia" onPress={()=> setShowBible(!showBible)}/>
-                {showBible && <BibleSelector />}
-                <Button title="Livro" onPress={()=> setShowBook(!showBook)}/>
-                {showBook && <BookSelector />}
+                <BibleSelector />                
+                <BookSelector />
             </View> 
         </Modal>
     </ScrollView>

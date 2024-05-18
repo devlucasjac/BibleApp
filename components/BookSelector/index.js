@@ -1,14 +1,15 @@
-import {View, Text, ScrollView, Button} from "react-native"
+import {View, ScrollView, Button} from "react-native"
 
 import { useState,useEffect,useContext } from "react"
 
 
-import {BASE_URL,Flags} from "../../configs"
+import {BASE_URL} from "../../configs"
 
 import CurrentBook from "../../context/CurrentBook"
 
-export default function BookSelector(){
+export default function BookSelector() {
     const [books,setBooks] = useState()
+    const [showBook,setShowBook] = useState(false)
     const {currentBook,setCurrentBook} = useContext(CurrentBook)
 
     useEffect(() => {
@@ -26,8 +27,10 @@ export default function BookSelector(){
       });
 
     return <ScrollView>
-        {books && books.map((book)=><View>
-            <Button title={book.name} onPress={()=>setCurrentBook({...currentBook,book:book.bookid,chapter:1})}/>
+        <Button title="Livro" onPress={()=> setShowBook(!showBook)}/>
+        {showBook && books && books.map((book)=><View>
+            <Button title={book.name} onPress={()=>{setShowBook(!showBook)
+              setCurrentBook({...currentBook,book:book.bookid,chapter:1})}}/>
         </View>)}
     </ScrollView>
 } 

@@ -8,7 +8,8 @@ import CurrentBook from "../../context/CurrentBook"
 
 export default function BibleSelector(){
     const [bibles, setBibles] = useState()
-    const {currentBook, setCurrentBook} = useContext(CurrentBook)
+    const [showBible,setShowBible] = useState(false)
+    const {currentBook, setCurrentBook} = useContext(CurrentBook)    
 
     useEffect(()=>{
         const xhr = new XMLHttpRequest();
@@ -26,15 +27,17 @@ export default function BibleSelector(){
     },[])
 
     return <ScrollView>
-            {bibles && bibles.map((bible,i)=><View>
+            <Button title="Biblia" onPress={()=> setShowBible(!showBible)}/>
+            {showBible && bibles && bibles.map((bible,i)=><View>
                 <Text>{bible.language}{Flags[i]}</Text>
                 {bible.translations.map((translation)=>
                     <Button title={translation.full_name} 
-                            onPress={()=> setCurrentBook({...currentBook,
+                            onPress={()=>{ setShowBible(!showBible)
+                                setCurrentBook({...currentBook,
                                 bible:translation.short_name,
                                 book:1,
                                 chapter:1
-                            })}/>
+                            })}}/>
                 )}                
             </View>)}
         </ScrollView>
