@@ -15,6 +15,7 @@ export default function Home() {
     request.onload = () => {
       if (request.readyState === 4 && request.status === 200) {
         const data = request.response;
+        console.log(JSON.parse(data))
         setPray(JSON.parse(data));
       } else {
         console.log(`Error: ${request.status}`);
@@ -24,11 +25,11 @@ export default function Home() {
 
   return (
     <View>
+      <Text>Home</Text>
+      <RandomVerse />
       {pray && (
         <>
-          <Text>Home</Text>
-          <RandomVerse />
-          <Text>Liturgia</Text>
+          <Text>Liturgia</Text>          
           <Text>{pray.primeiraLeitura.texto}</Text>
         </>
       )}

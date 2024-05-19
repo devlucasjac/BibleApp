@@ -16,6 +16,7 @@ export default function RandomVerse(){
         xhr.onload = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const data = xhr.response;
+            console.log(data)
             setVerse(JSON.parse(data));
         } else {
             console.log(`Error: ${xhr.status}`);
