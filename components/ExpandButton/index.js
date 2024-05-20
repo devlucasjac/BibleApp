@@ -1,5 +1,7 @@
 import {View, Button, Text} from "react-native"
 
+import DarkmodeButton from "../DarkmodeButton"
+
 import { useState } from "react"
 
 export default function ExpandButton (){
@@ -7,7 +9,7 @@ export default function ExpandButton (){
 
     return <View>
         <Button title={expand ? "-":"+"} onPress={()=>setExpand(!expand)}/>
-        {expand && <View><Text>Abriu</Text></View>}
+        {expand && <View><DarkmodeButton /></View>}
     </View>
 
 }
