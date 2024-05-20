@@ -1,5 +1,6 @@
 import ShowVerse from "../ShowVerse"
 import HeaderBible from "../HeaderBible"
+import ExpandButton from "../ExpandButton"
 
 import Books from "../../context/Books"
 import CurrentBook from "../../context/CurrentBook"
@@ -86,7 +87,10 @@ export default function BibleReader (){
     return <ScrollView>
         {book && chapter &&(<>
           <HeaderBible />
-          <Text>{book.name} : {currentBook.chapter}</Text>
+          <View>
+            <Text>{book.name} : {currentBook.chapter}</Text>
+            <ExpandButton />
+          </View>
           <>{chapter.map((verse)=><ShowVerse verse={verse} key={verse.id}/>)}</>
           <View>
             <Button title="Anterior" onPress={()=>changeChapter("anterior")}/>
