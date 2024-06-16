@@ -6,7 +6,7 @@ import ShowVerse from "../ShowVerse"
 import Books from "../../context/Books"
 import CurrentBook from "../../context/CurrentBook"
 
-export default function BibleVerseContainer ({verse, title, handleClick}){
+export default function BibleVerseContainer ({verse, key, title, handleClick}){
     const {books} = useContext(Books)
     const {currentBook} = useContext(CurrentBook)
 
@@ -20,15 +20,15 @@ export default function BibleVerseContainer ({verse, title, handleClick}){
     return <>
         {verse.verse && 
             <>
-                <View>
-                    <Button  title="navegar" onPressed={() => {
-                    handleClick !== undefined && handleClick(verse);
-                    console.log(currentBook)
-                }}/>
+                <View key={key}>                    
                     {title && <Text>{title}</Text>}
                     <Text>Livro:{findBook(verse.book).name}</Text>
                     <Text>Capitulo:{verse.chapter}</Text>
                     <ShowVerse verse={verse}/>
+                    <Button  title="navegar" onPressed={() => {
+                    handleClick !== undefined && handleClick;
+                    console.log(currentBook)
+                }}/>
                 </View>
             </>
         }

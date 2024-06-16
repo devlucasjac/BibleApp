@@ -14,7 +14,7 @@ export default function FoundedVerses(){
 
     const navigation = useNavigation()
     //bug de permanencia do books.results ainda persiste
-    //useEffect(()=>{console.log(books.results)},[books])
+    useEffect(()=>{console.log(books.results)},[books])
 
     function ChangeChapter(verse){
         setCurrentBook({...currentBook,book:verse.book,chapter:verse.chapter})
@@ -22,7 +22,7 @@ export default function FoundedVerses(){
     }
 
     return <ScrollView>
-            {books.results.map((verse)=> <BibleVerseContainer verse={verse} handleClick={ChangeChapter}/>)}
+            {books.results.map((verse,id)=> <BibleVerseContainer verse={verse} key={id} handleClick={ChangeChapter(verse)}/>)}
         </ScrollView>
     
 }

@@ -15,6 +15,7 @@ export default function SearchVerse(){
     const navigation = useNavigation() 
 
     const [input,setInput] = useState()
+    const [result,setResult] = useState()
 
     const handleInput =(text)=>{
         setInput(text)
@@ -27,8 +28,9 @@ export default function SearchVerse(){
         xhr.onload = () => {
           if (xhr.readyState === 4 && xhr.status === 200) {
             const data = xhr.response;    
-            console.log(JSON.parse(data))        
-            setBooks({...books, results: JSON.parse(data)});
+            setResult(JSON.parse(data))
+            //console.log(JSON.parse(data))        
+            setBooks({...books, results: result});
           } else {
             console.log(`Error: ${xhr.status}`);
           }
@@ -43,6 +45,6 @@ export default function SearchVerse(){
 
     return <View>
         <TextInput placeholder="pesquisa..." value={input} onChangeText={handleInput}/>
-        <Button title="pesquisar" onPress={searchPassages}/>
+        <Button title="pesquisar" onPress={searchPassages} disabled={result ? false : true}/>
     </View>
 }

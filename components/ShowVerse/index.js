@@ -1,6 +1,6 @@
 import {View,Text} from "react-native"
 
-export default function ShowVerse({verse}){  
+export default function ShowVerse({verse,key}){  
 
-    return <View>{verse && <Text><Text>{verse.verse}</Text>{verse.text}</Text>}</View>
+    return <View key={key}>{verse && <Text><Text>{verse.verse}</Text>{verse.text}</Text>}</View>
 }
