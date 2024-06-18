@@ -12,7 +12,7 @@ Este é um aplicativo móvel de Bíblia desenvolvido em React Native. Ele permit
 
 - **Configurações de Leitura**: Personalize o tamanho do texto, o tema do aplicativo e outras configurações de leitura.
 
-- **Compartilhamento**: Compartilhe versículos com amigos e familiares através de mensagens, e-mail ou mídias sociais.
+- **Compartilhamento**: Compartilhe versículos com amigos e familiares através de  imagens por meio de whatssapp e midias socias.
 
 ## Como Usar
 
